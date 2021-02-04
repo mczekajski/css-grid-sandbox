@@ -7,7 +7,6 @@ body {
   display: grid;
   grid-template-columns: minmax(120px, 200px) minmax(240px, 1fr) 80px;
   grid-template-rows: auto 1fr auto auto;
-
   grid-template-areas:
     "logotype search hamburger"
     "images images images"
@@ -18,6 +17,22 @@ body {
   min-height: 100vh;
   max-width: 1240px;
   margin: 0 auto;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: minmax(300px, auto) 1fr;
+    grid-template-rows: auto auto auto 1fr auto auto;
+    grid-template-areas:
+      "logotype images"
+      "menu images"
+      "search images"
+      ". images"
+      "foot foot";
+
+    // kontener
+    min-height: 100vh;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
 }
 
 .logo {
@@ -27,18 +42,28 @@ body {
   grid-row-end: 2;
   background-color: rgb(202, 130, 130);
   height: 100px;
+  @media (min-width: 1024px) {
+      grid-area: logotype;
+  }
 }
 
 .search {
   grid-column: 2/3;
   grid-row: 1/2;
   background-color: rgb(157, 156, 199);
+  @media (min-width: 1024px) {
+      grid-area: search;
+      min-height: 80px;
+  }
 }
 
 .menu {
   grid-column: -1/-2;
   grid-row: 1/2;
   background-color: rgb(217, 219, 100);
+  @media (min-width: 1024px) {
+    grid-area: menu;
+}
 }
 
 .gallery {
@@ -47,10 +72,10 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(205px, 1fr)); //900px
   grid-gap: 15px;
   padding: 120px 15px 15px;
-
   grid-column: 1/-1;
   grid-row: 2;
   background-color: aquamarine;
+  grid-area: images;
 
   img {
     width: 100%;
